@@ -5,7 +5,7 @@ import Models.Monster;
 
 public class GameMonsters {
 
-	// add inventories
+	// add inventories as variable
 	public static Monster getSpacePirate(int goldAmount) {
 		try {
 			return new Monster("Space Pirate", "Infamous space pirates known for causing havoc system wide. They are despised by all colonies. They are armored with light weaponry and armor.", 2, 10, goldAmount, null);

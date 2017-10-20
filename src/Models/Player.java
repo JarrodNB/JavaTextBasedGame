@@ -2,6 +2,7 @@
 package Models;
 
 import DataStorage.GameItems;
+import GameExceptions.CharacterException;
 import GameExceptions.ItemException;
 import GameExceptions.YouDontHaveThatException;
 
@@ -10,7 +11,7 @@ public class Player extends Character {
 	private Weapon currentWeapon;
 	private Armor currentArmor;
 	
-	public Player(String name, int defense, int attack, int maxHealth, int gold, Inventory inventory) throws Exception {
+	public Player(String name, int defense, int attack, int maxHealth, int gold, Inventory inventory) throws CharacterException {
 		super(name, defense, attack, maxHealth, gold, inventory);
 		this.currentWeapon = GameItems.getPlasmaKnife(1);
 		this.currentArmor = GameItems.getPilotSuit(1);

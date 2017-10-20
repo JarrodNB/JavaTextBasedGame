@@ -1,7 +1,6 @@
 
 package Models;
 
-import GameExceptions.CharacterException;
 import GameExceptions.ItemException;
 import GameExceptions.WeaponException;
 

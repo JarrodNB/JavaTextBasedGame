@@ -5,7 +5,7 @@ package Models;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Room {
+public class Room {
 
 	private String name;
 	private String description;
@@ -15,6 +15,7 @@ public abstract class Room {
 	private Universe universe;
 	private RoomPuzzle roomPuzzel;
 	private RoomGold roomGold;
+	private boolean containsShop;
 	
 	public Room(String name, String description, List<RoomItem> roomItems, RoomMonster roomMonster, RoomPuzzle puzzle, RoomGold roomGold) {
 		this.name = name;
@@ -63,5 +64,22 @@ public abstract class Room {
 	
 	public void setUniverse(Universe universe) {
 		this.universe = universe;
+	}
+	
+	public boolean isExitInRoom(String exit) {
+		for (Map.Entry<String, Boolean> entry : exits.entrySet()) {
+			if (entry.getKey().equalsIgnoreCase(exit)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean containsShop() {
+		return containsShop;
+	}
+	
+	public void setContainsShop(boolean shop) {
+		this.containsShop = shop;
 	}
 }

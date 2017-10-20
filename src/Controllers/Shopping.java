@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import GameExceptions.CharacterException;
 import GameExceptions.ItemException;
+import GameExceptions.YouDontHaveThatException;
 import Models.Item;
 import Models.Player;
 import Models.Shop;
@@ -90,7 +91,7 @@ public class Shopping {
 		}
 		
 		else {
-			System.out.println(GameEngine.UNRECOGNIZEDCOMMAND);
+			System.out.println(GameEngine.UNRECOGNIZED_COMMAND);
 		}
 
 	}
@@ -109,8 +110,9 @@ public class Shopping {
 	private static void sell(Player player, Item item) throws CharacterException {
 		try {
 			player.getInventory().removeItem(item, 1);
-		} catch (Exception e) {
+		} catch (YouDontHaveThatException | ItemException e) {
 			System.out.println("It appears that you dont have that item!");
+			return;
 		}
 		player.setGold(player.getGold() + item.getSellValue());
 	}

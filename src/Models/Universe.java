@@ -3,19 +3,23 @@ package Models;
 
 import java.util.Map;
 
+import DataStorage.GameRooms;
+
 public class Universe {
 
 	private Map<String, Room> rooms;
 	private Player player;
 	private  Room currentRoom;
 	
-	public Universe(Map<String, Room> rooms) {
-		this.rooms = rooms;
+	public Universe(Player player) {
+		this.player = player;
+		rooms = GameRooms.getRooms();
+		for (Map.Entry<String, Room> entry : rooms.entrySet()) {
+			entry.getValue().setUniverse(this);
+		}
+		currentRoom = rooms.get("Crash Site");
 	}
 	
-	public Universe() {
-		
-	}
 	
 	public Room getRoom(String roomName) {
 		return this.rooms.get(roomName);
@@ -25,16 +29,16 @@ public class Universe {
 		return this.player;
 	}
 	
-	public void bigBang() {
-		// go through rooms and set this as universe
-	}
-
 	public Map<String, Room> getRooms() {
 		return rooms;
 	}
 
 	public Room getCurrentRoom() {
 		return currentRoom;
+	}
+	
+	public void setCurrentRoom(Room room) {
+		this.currentRoom = room;
 	}
 	
 }

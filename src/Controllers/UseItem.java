@@ -10,7 +10,6 @@ import Models.Player;
 public class UseItem {
 
 	public static void useItem(Player player, String itemName) {
-		int playerHp = player.getHealthPoints();
 		int playerMax = player.getMaxHealth();
 		
 		try {

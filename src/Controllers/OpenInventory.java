@@ -95,7 +95,7 @@ public class OpenInventory {
 		}
 		
 		else {
-			System.out.println(GameEngine.UNRECOGNIZEDCOMMAND);
+			System.out.println(GameEngine.UNRECOGNIZED_COMMAND);
 		}
 	}
 	

@@ -81,7 +81,7 @@ public class Arena {
 				System.out.println(HELP);
 				break;
 			default:
-				System.out.println(GameEngine.UNRECOGNIZEDCOMMAND);
+				System.out.println(GameEngine.UNRECOGNIZED_COMMAND);
 				
 		}
 		
