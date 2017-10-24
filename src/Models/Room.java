@@ -82,4 +82,9 @@ public class Room {
 	public void setContainsShop(boolean shop) {
 		this.containsShop = shop;
 	}
+	
+	@Override
+	public String toString() {
+		return this.name + " " + this.description;
+	}
 }

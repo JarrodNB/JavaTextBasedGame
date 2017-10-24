@@ -36,11 +36,11 @@ public class GameEngine {
 				universe = LoadGame.load();
 			} else {
 				System.out.println(UNRECOGNIZED_COMMAND);
-				scanner.close();
+				//scanner.close();
 				continue;
 			}
 			try {
-				scanner.close();
+				//scanner.close();
 				RoomHandler.enter(universe.getCurrentRoom());
 			} catch (PlayerIsDeadException dead) {
 				universe.getPlayer().setGold(universe.getPlayer().getGold() / 2);

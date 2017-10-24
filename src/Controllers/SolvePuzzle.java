@@ -26,10 +26,12 @@ public class SolvePuzzle {
 				break;
 			} else if (userInput.equalsIgnoreCase("give up")) {
 				System.out.println("You have given up and will be returned to your room in shame.");
-				scanner.close();
+				//scanner.close();
 				return;
 			} else if (userInput.equalsIgnoreCase("help")) {
 				System.out.println(HELP);
+			} else {
+				System.out.println("Thats not correct");
 			}
 		}
 		
@@ -42,7 +44,7 @@ public class SolvePuzzle {
 			player.getInventory().addItem(puzzle.getItemReward());
 			System.out.println("You have received a " + puzzle.getItemReward().getName() + "!");
 		}
-		scanner.close();
+		//scanner.close();
 		System.out.println("You have completed the puzzle! You are now back in the room.");
 		roomPuzzle.setIsInRoom(false);
 	}

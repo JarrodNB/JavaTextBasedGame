@@ -25,7 +25,7 @@ public class Arena {
 				System.out.println("Will you attack, defend, open inventory, or retreat?");
 				String userInput = scanner.nextLine().toLowerCase();
 				if (userInput.equals("retreat")) {
-					scanner.close();
+					//scanner.close();
 					monster.heal(monster.getMaxHealth());
 					System.out.println("You ran away like a coward and they have lost interest in you, though you are still in the same room");
 					return;
@@ -34,16 +34,22 @@ public class Arena {
 			}
 		} catch (MonsterIsDeadException dead) {
 			try {
-				player.getInventory().addInventory(monster.getInventory());
-				System.out.println("You have received " + monster.getInventory().toString() + ".");
-				player.setGold(player.getGold() + monster.getGold());
-				System.out.println("You have recieved " + monster.getGold() + " gold!");
+				System.out.println("You defeated " + monster.getName());
+				if (monster.getInventory() != null) {
+					player.getInventory().addInventory(monster.getInventory());
+					System.out.println("You have received " + monster.getInventory().toString() + ".");
+				}
+				
+				if (monster.getGold() != 0) {
+					player.setGold(player.getGold() + monster.getGold());
+					System.out.println("You have recieved " + monster.getGold() + " gold!");
+				}
 				roomMonster.setIsInRoom(false);
 			} catch (CharacterException | ItemException e) {
 				System.out.println(e.getMessage());
 			}
 		} finally {
-			scanner.close();
+			//scanner.close();
 		}
 		
 	}
@@ -51,7 +57,7 @@ public class Arena {
 	private static void determineDamage(Player player, Monster monster, int defense) throws PlayerIsDeadException, MonsterIsDeadException {
 		int playerDamage = monster.getBaseAttack() - defense;
 		if (playerDamage < 1) {
-			System.out.println("The monster was unable to damage you!");
+			System.out.println(monster.getName() + " was unable to damage you!");
 		} else {
 			player.takeDamage(playerDamage);
 			System.out.println(monster.getName() + " attacked you and did " + playerDamage + " damage!");
@@ -63,7 +69,7 @@ public class Arena {
 		switch (userInput) {
 			
 			case "attack":
-				monster.takeDamage(monster.getHealthPoints() - player.getCalcAttack());
+				monster.takeDamage(player.getCalcAttack());
 				System.out.println("You dealt " + player.getCalcAttack() + " damage!");
 				determineDamage(player, monster, player.getCalcDefense());
 				break;

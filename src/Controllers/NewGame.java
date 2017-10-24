@@ -22,11 +22,11 @@ public class NewGame {
 		Inventory inventory = new Inventory();
 		try {
 			Player player = new Player(name, 0, 1, 100, 1000, inventory);
-			scanner.close();
+			//scanner.close();
 			return new Universe(player);
 		} catch (CharacterException e) {
 			e.printStackTrace();
-			scanner.close();
+			//scanner.close();
 		}
 		return null;
 	}

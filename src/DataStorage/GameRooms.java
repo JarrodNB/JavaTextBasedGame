@@ -1,6 +1,7 @@
 
 package DataStorage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class GameRooms {
 				+ "net. To the north, there appears to be a building, so maybe it would be best to investigate.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getFirstPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Laboratory", false);
@@ -50,8 +51,9 @@ public class GameRooms {
 	public static Room getPortalRoom() {
 		String description = "You enter a room with a single portal,"
 				+ " which is currently turned on and active.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getWornoutRobot(100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();

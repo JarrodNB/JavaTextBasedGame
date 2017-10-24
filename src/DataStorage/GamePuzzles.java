@@ -7,7 +7,7 @@ import Models.Puzzle;
 public class GamePuzzles {
 
 	public static Puzzle getFirstPuzzle() {
-		return new Puzzle(0, "What are Saturn’s Rings made of?", "Ice", "Dust, Ice, or Boron", null, 0);
+		return new Puzzle(0, "What are Saturn’s Rings made of?", "Ice", "Dust, Ice, or Boron", null, 10000000);
 	}
 	
 	public static Puzzle getSecondPuzzle() {

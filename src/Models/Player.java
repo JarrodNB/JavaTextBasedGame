@@ -28,28 +28,44 @@ public class Player extends Character {
 	}
 	
 	public void equipWeapon(String weaponName) throws ItemException, YouDontHaveThatException {
-		unequipWeapon();
-		Weapon weapon = (Weapon) this.getInventory().getItem(weaponName);
-		this.currentWeapon = weapon;
+		if (getInventory().hasItem(weaponName)) {
+			if (currentWeapon != null) {
+				unequipWeapon();
+			}
+			Weapon weapon = (Weapon) this.getInventory().getItem(weaponName);
+			this.currentWeapon = weapon;
+		} else {
+			throw new YouDontHaveThatException("You dont have that weapon");
+		}
 	}
 	
 	public void unequipWeapon() throws ItemException  {
-		Weapon weapon  = currentWeapon;
-		this.currentWeapon = null;
-		this.getInventory().addItem(weapon);
+		if (currentWeapon != null) {
+			Weapon weapon = currentWeapon;
+			this.currentWeapon = null;
+			this.getInventory().addItem(weapon);
+		}
 	}
 	
 	public void equipArmor(String armorName) throws ItemException, YouDontHaveThatException  {
-		unequipArmor();
-		Armor armor = (Armor) this.getInventory().getItem(armorName);
-		this.currentArmor = armor;
+		if (getInventory().hasItem(armorName)) {
+			if (currentArmor != null) {
+				unequipArmor();
+			}
+			Armor armor = (Armor) this.getInventory().getItem(armorName);
+			this.currentArmor = armor;
+		} else {
+			throw new YouDontHaveThatException("You dont have that armor");
+		}
 		
 	}
 	
 	public void unequipArmor() throws ItemException {
-		Armor armor = currentArmor;
-		this.currentArmor = null;
-		this.getInventory().addItem(armor);
+		if (currentArmor != null) {
+			Armor armor = currentArmor;
+			this.currentArmor = null;
+			this.getInventory().addItem(armor);
+		}
 	}
 	
 }

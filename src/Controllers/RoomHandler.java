@@ -14,18 +14,26 @@ import Models.RoomItem;
 public class RoomHandler {
 	
 	// add save add monster examine
-	private static final String HELP = "Your possible commands are look, check containerName, fight, solve puzzle, open inventory, and go to RoomName";
+	private static final String HELP = "Your possible commands are look, check containerName,"
+			+ " fight, examine monster, solve puzzle, open inventory, save, and go to RoomName";
 
 	public static void enter(Room room) throws PlayerIsDeadException, ItemException, CharacterException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println(room.getDescription());
 		while (true) {
-			String input = scanner.nextLine().toLowerCase();
+			String input = scanner.nextLine();//testing.toLowerCase();
 			String destination = roomCommands(room, input);
 			if (destination != null && room.isExitInRoom(destination)) {
 				System.out.println("You are traveling to " + destination);
-				scanner.close();
-				RoomHandler.enter(room.getUniverse().getRoom(destination));
+				//scanner.close();
+				//System.out.println(destination); // testing
+				//System.out.println(room.getUniverse().getRoom(destination));// testing
+				try {
+					RoomHandler.enter(room.getUniverse().getRoom(destination));
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else if (destination != null) {
 				System.out.println("There is no connection to that room!");
 			}
@@ -33,6 +41,12 @@ public class RoomHandler {
 	}
 	
 	private static String roomCommands(Room room, String input) throws PlayerIsDeadException, ItemException, CharacterException {
+		
+		if (input.equalsIgnoreCase("save")) {
+			SaveGame.save(room.getUniverse(), room);
+			System.out.println("The game has been saved.");
+			return null;
+		}
 		
 		if (input.equalsIgnoreCase("look")) {
 			displayRoomObjects(room);
@@ -42,7 +56,9 @@ public class RoomHandler {
 		if (input.equalsIgnoreCase("open inventory")) {
 			OpenInventory.openInventory(room.getUniverse().getPlayer());
 			return null;
-		} else if (input.startsWith("fight")) {
+		} 
+		
+		 if (input.startsWith("fight")) {
 			if (room.getRoomMonster() != null && room.getRoomMonster().isInRoom()) {
 				Arena.fight(room.getUniverse().getPlayer(), room.getRoomMonster());
 				return null;
@@ -63,8 +79,21 @@ public class RoomHandler {
 			return null;
 		}
 		
+		if (input.equalsIgnoreCase("examine monster")) {
+			if (room.getRoomMonster() != null && room.getRoomMonster().isInRoom()) {
+				System.out.println(room.getRoomMonster().getMonster().getDescription());
+				return null;
+			} else {
+				System.out.println("There is no monster to examine");
+				return null;
+			}
+		}
+		
 		String[] inputArray = input.split(" ");
 		int length = inputArray.length;
+		for (int index = 0; index < inputArray.length; index++) {
+			inputArray[index] = inputArray[index].substring(0, 1).toUpperCase() + inputArray[index].substring(1, inputArray[index].length());
+		}
 
 		if (inputArray[0].equalsIgnoreCase("check")) {
 			if (length == 3) {
@@ -141,29 +170,34 @@ public class RoomHandler {
 		
 		for (Map.Entry<String, Boolean> entry : room.getExits().entrySet()) {
 			if (entry.getValue() == true) {
-				System.out.println("In the distance you can see a portal to " + entry.getKey() + ".");
+				System.out.println("You can see a portal to " + entry.getKey() + ".");
 			} else {
-				System.out.println("You can see an entrance to " + entry.getKey() + ".");
+				System.out.println("You can see an entrance to " + entry.getKey() + " in the distance.");
 			}
 			
 		}
 	}
 	
 	private static void getItemFromContainer(Room room, String containerName) throws ItemException, CharacterException {
-		if (room.getRoomGold().getContainerName().equalsIgnoreCase(containerName)) {
-			Player player = room.getUniverse().getPlayer();
-			player.setGold(player.getGold() + room.getRoomGold().getGold());
-			room.getRoomGold().setIsInRoom(false);
-			System.out.println("You found " + room.getRoomGold().getGold() + " gold!");
-			return;
-		}
-		for (RoomItem roomItem : room.getRoomItems()) {
-			if (roomItem.getContainerName().equalsIgnoreCase(containerName) && roomItem.isInRoom()) {
-				room.getUniverse().getPlayer().getInventory().addItem(roomItem.getItem());
-				roomItem.setIsInRoom(false);
-				System.out.println("You found " + roomItem.getItem().getQuantity() + " " + roomItem.getItem().getName()+ ".");
+		if (room.getRoomGold() != null) {
+			if (room.getRoomGold().getContainerName().equalsIgnoreCase(containerName)) {
+				Player player = room.getUniverse().getPlayer();
+				player.setGold(player.getGold() + room.getRoomGold().getGold());
+				room.getRoomGold().setIsInRoom(false);
+				System.out.println("You found " + room.getRoomGold().getGold() + " gold!");
 				return;
-			}
+			} 
+		}
+		if (room.getRoomItems() != null) {
+			for (RoomItem roomItem : room.getRoomItems()) {
+				if (roomItem.getContainerName().equalsIgnoreCase(containerName) && roomItem.isInRoom()) {
+					room.getUniverse().getPlayer().getInventory().addItem(roomItem.getItem());
+					roomItem.setIsInRoom(false);
+					System.out.println(
+							"You found " + roomItem.getItem().getQuantity() + " " + roomItem.getItem().getName() + ".");
+					return;
+				}
+			} 
 		}
 		System.out.println("There is nothing to check with that name.");
 	}

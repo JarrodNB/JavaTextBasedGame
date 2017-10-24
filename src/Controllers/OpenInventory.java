@@ -12,8 +12,8 @@ import Models.Player;
 import Models.Weapon;
 
 public class OpenInventory {
-
-	
+// add character stats gold etc
+	// add redisplay inv
 	// Make exception string prettier
 	private static final String HELP = "your possible commands are use itemName, examine itemName, equip itemName, unequip weapon/armor, or exit.";
 
@@ -24,7 +24,7 @@ public class OpenInventory {
 		while (true) {
 			String input = scanner.nextLine();
 			if (input.equals("exit")) {
-				scanner.close();
+				//scanner.close();
 				return;
 			}
 			try {
@@ -78,15 +78,15 @@ public class OpenInventory {
 		}
 		
 		else if (inputArray[0].equalsIgnoreCase("examine")) {
-			if (inputArray.length == 2) {
+			if (inputArray.length == 3) {
 				String itemName = inputArray[1] + " " + inputArray[2];
-				player.getInventory().getItemNoRemoval(itemName).getDescription();
-			} else if (inputArray.length == 3){
+				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
+			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
-				player.getInventory().getItemNoRemoval(itemName).getDescription();
+				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
 			} else {
 				String itemName = inputArray[1];
-				player.getInventory().getItemNoRemoval(itemName).getDescription();
+				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
 			}
 		}
 		
@@ -100,13 +100,19 @@ public class OpenInventory {
 	}
 	
 	private static void equip(Player player, String itemName) throws YouDontHaveThatException, ItemException {
-		Item item = player.getInventory().getItemNoRemoval(itemName);
-		if (item instanceof Weapon) {
-			player.equipWeapon(itemName);
-		} else if (item instanceof Armor) {
-			player.equipArmor(itemName);
-		} else {
-			System.out.println("That can not be equipped!");
+		System.out.println(itemName);
+		if (player.getInventory().hasItem(itemName)) {
+			Item item = player.getInventory().getItemNoRemoval(itemName);
+			if (item instanceof Weapon) {
+				player.equipWeapon(itemName);
+			} else if (item instanceof Armor) {
+				player.equipArmor(itemName);
+			} else {
+				System.out.println("That can not be equipped!");
+			} 
+		}
+		else {
+			System.out.println("Thats not an item you have.");
 		}
 	}
 	

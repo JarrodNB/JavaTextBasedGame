@@ -53,12 +53,12 @@ public class Character {
 	}
 	
 	protected void setInventory(Inventory inventory) throws CharacterException {
-		if (inventory == null) throw new CharacterException("inventory cannot be null " + getClass().getSimpleName());
+		// testing      if (inventory == null) throw new CharacterException("inventory cannot be null " + getClass().getSimpleName());
 		this.inventory = inventory;
 	}
 
 	private void setMaxHealth(int hp) throws CharacterException {
-		if (hp < 10) throw new CharacterException("max hp is too low" + getClass().getSimpleName());
+		if (hp < 5) throw new CharacterException("max hp is too low" + getClass().getSimpleName());
 		maxHealth = hp;
 	}
 	
@@ -78,6 +78,7 @@ public class Character {
 				throw new MonsterIsDeadException();
 			}
 		} else {
+			System.out.println(this + " took " + amount); // testing
 			this.healthPoints -= amount;
 		}
 	}

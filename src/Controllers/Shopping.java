@@ -21,9 +21,9 @@ public class Shopping {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			System.out.println("Would you like to buy, sell, examine an item, or leave?");
-			String input = scanner.nextLine().toLowerCase();
+			String input = scanner.nextLine();// testing .toLowerCase();
 			if (input.startsWith("leave")) {
-				scanner.close();
+				//scanner.close();
 				return;
 			}
 			try {
@@ -36,44 +36,79 @@ public class Shopping {
 	
 	private static void shopInput(String input, Player player) throws CharacterException, ItemException {
 		String[] inputArray = input.split(" ");
+		for (int index = 0; index < inputArray.length; index++) {
+			inputArray[index] = inputArray[index].substring(0, 1).toUpperCase() + inputArray[index].substring(1, inputArray[index].length());
+		}
 
 		if (inputArray[0].equalsIgnoreCase("buy")) {
+			
 			if (inputArray.length == 3) {
 				String itemName = inputArray[1] + " " + inputArray[2];
-				Item item = shop.getStockItem(itemName);
-				buy(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					buy(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
-				Item item = shop.getStockItem(itemName);
-				buy(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					buy(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
 			} else {
 				String itemName = inputArray[1];
-				Item item = shop.getStockItem(itemName);
-				buy(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					buy(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
 			}
 		}
 		
-		else if (inputArray[0].equals("sell")) {
+		else if (inputArray[0].equalsIgnoreCase("sell")) {
 			if (inputArray.length == 3) {
 				String itemName = inputArray[1] + " " + inputArray[2];
-				Item item = shop.getStockItem(itemName);
-				sell(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					sell(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
+				
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
-				Item item = shop.getStockItem(itemName);
-				sell(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					sell(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
 			} else {
 				String itemName = inputArray[1];
-				Item item = shop.getStockItem(itemName);
-				sell(player, item);
+				Item item;
+				if (shop.getStockItem(itemName) != null) {
+					item = shop.getStockItem(itemName);
+					sell(player, item);
+				} else {
+					System.out.println("Thats not a real Item.");
+				}
 			}
 		}
 		
 		else if (inputArray[0].equals("examine")) {
-			if (inputArray.length == 2) {
+			if (inputArray.length == 3) {
 				String itemName = inputArray[1] + " " + inputArray[2];
 				System.out.println(shop.examineItem(itemName));
-			} else if (inputArray.length == 3){
+			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				System.out.println(shop.examineItem(itemName));
 			} else {
@@ -110,6 +145,7 @@ public class Shopping {
 	private static void sell(Player player, Item item) throws CharacterException {
 		try {
 			player.getInventory().removeItem(item, 1);
+			// string for selling itemname item sell value
 		} catch (YouDontHaveThatException | ItemException e) {
 			System.out.println("It appears that you dont have that item!");
 			return;
