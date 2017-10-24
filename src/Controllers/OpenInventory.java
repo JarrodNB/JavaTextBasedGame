@@ -12,10 +12,9 @@ import Models.Player;
 import Models.Weapon;
 
 public class OpenInventory {
-// add character stats gold etc
-	// add redisplay inv
+
 	// Make exception string prettier
-	private static final String HELP = "your possible commands are use itemName, examine itemName, equip itemName, unequip weapon/armor, or exit.";
+	private static final String HELP = "your possible commands are use itemName, examine itemName, equip itemName, unequip weapon/armor, stats, or exit.";
 
 	public static void openInventory(Player player) {
 		System.out.println(player.getInventory().toString());
@@ -29,11 +28,11 @@ public class OpenInventory {
 			}
 			try {
 				inventoryInput(player, input);
+				System.out.println(player.getInventory().toString());
 			} catch (YouDontHaveThatException | ItemException | PlayerIsDeadException e) {
 				System.out.println(e.getMessage());
 			}
 		}
-
 	}
 	
 	private static void inventoryInput(Player player, String input) throws YouDontHaveThatException, PlayerIsDeadException, ItemException {
@@ -51,6 +50,10 @@ public class OpenInventory {
 				String itemName = inputArray[1];
 				UseItem.useItem(player, itemName);
 			}
+		}
+		
+		else if (inputArray[0].equalsIgnoreCase("stats")) {
+			System.out.println(player);
 		}
 		
 		else if (inputArray[0].equalsIgnoreCase("equip")) {

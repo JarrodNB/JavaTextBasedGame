@@ -69,7 +69,7 @@ public class GameItems {
 	
 	public static Weapon getLaserRifle(int quantity) {
 		try {
-			return new Weapon(3, "Plasma Rifle", "Military grade weaponry used by colony militia’s. Expensive.", 600, quantity, 7, 5);
+			return new Weapon(3, "Laser Rifle", "Military grade weaponry used by colony militia’s. Expensive.", 600, quantity, 7, 5);
 		} catch (ItemException | WeaponException e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -109,6 +109,60 @@ public class GameItems {
 		} catch (ItemException e) {
 			System.out.println(e.getMessage());
 			return null;
+		}
+	}
+	
+	public static Item getRadar() {
+		try {
+			return new Item(3, "Radar", "A piece of the ship that allows us to detect objects in space.", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
+		}
+	}
+	
+	public static Item getCockpit() {
+		try {
+			return new Item(4, "Cockpit", "A piece of the ship that allows us to pilot the ship.", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
+		}
+	}
+	
+	public static Item getEngine() {
+		try {
+			return new Item(5, "Engine", "We need this to power the ship!", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
+		}
+	}
+	
+	public static Item getComms() {
+		try {
+			return new Item(6, "Communication Network", "We need this to communicate.", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
+		}
+	}
+	
+	public static Item getWings() {
+		try {
+			return new Item(7, "Wings", "We need this to fly the ship.", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
+		}
+	}
+	
+	public static Item getDefenseTurret() {
+		try {
+			return new Item(7, "Defense Turret", "We need this to protect the ship.", 1, 1);
+		} catch (ItemException e) {
+			System.out.println(e.getMessage());
+			return null;	
 		}
 	}
 	

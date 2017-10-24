@@ -99,7 +99,7 @@ public class Character {
 	
 	@Override
 	public String toString() {
-		return this.name + " " + this.healthPoints;
+		return this.name + " Health: " + this.healthPoints + " Gold: " + this.gold; // add calc attack?
 	}
 	
 }

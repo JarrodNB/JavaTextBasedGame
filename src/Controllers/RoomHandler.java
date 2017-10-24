@@ -143,7 +143,7 @@ public class RoomHandler {
 	
 	public static void displayRoomObjects(Room room) {
 		
-		if (room.getRoomGold() != null) {
+		if (room.getRoomGold() != null && room.getRoomGold().isInRoom()) {
 			System.out.println("You see a " + room.getRoomGold().getContainerName() + ". Maybe something valueable is inside.");
 		}
 		
@@ -155,17 +155,12 @@ public class RoomHandler {
 			} 
 		}
 		
-		if (room.getRoomMonster() != null) {
-			if (room.getRoomMonster().isInRoom()) {
-				System.out.println(
-						"You see a " + room.getRoomMonster().getMonster().getName() + ". Perhaps you should kill it");
-			} 
+		if (room.getRoomMonster() != null && room.getRoomMonster().isInRoom()) {
+				System.out.println("You see a " + room.getRoomMonster().getMonster().getName() + ". Perhaps you should kill it"); 
 		}
 		
-		if (room.getRoomPuzzle() != null) {
-			if (room.getRoomPuzzle().isInRoom()) {
+		if (room.getRoomPuzzle() != null && room.getRoomPuzzle().isInRoom()) {
 				System.out.println("You see a puzzle waiting to be solved!");
-			} 
 		}
 		
 		for (Map.Entry<String, Boolean> entry : room.getExits().entrySet()) {
@@ -179,7 +174,7 @@ public class RoomHandler {
 	}
 	
 	private static void getItemFromContainer(Room room, String containerName) throws ItemException, CharacterException {
-		if (room.getRoomGold() != null) {
+		if (room.getRoomGold() != null && room.getRoomGold().isInRoom()) {
 			if (room.getRoomGold().getContainerName().equalsIgnoreCase(containerName)) {
 				Player player = room.getUniverse().getPlayer();
 				player.setGold(player.getGold() + room.getRoomGold().getGold());

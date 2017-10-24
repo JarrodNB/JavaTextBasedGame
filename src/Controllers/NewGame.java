@@ -1,16 +1,11 @@
 
 package Controllers;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-import DataStorage.GameRooms;
 import GameExceptions.CharacterException;
 import Models.Inventory;
 import Models.Player;
-import Models.Room;
 import Models.Universe;
 
 public class NewGame {
@@ -21,7 +16,7 @@ public class NewGame {
 		String name = scanner.nextLine();
 		Inventory inventory = new Inventory();
 		try {
-			Player player = new Player(name, 0, 1, 100, 1000, inventory);
+			Player player = new Player(name, 0, 1, 100, 50, inventory);
 			//scanner.close();
 			return new Universe(player);
 		} catch (CharacterException e) {

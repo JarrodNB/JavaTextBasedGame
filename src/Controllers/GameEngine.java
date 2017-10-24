@@ -15,12 +15,9 @@ public class GameEngine {
 		GameEngine engine = new GameEngine();
 		engine.start();
 	}
-	
-	// to do
-	// finish rooms
-	// add items to puzzles and monster
-	// save, load, new game
-	// add save to room handler
+	// fix strings
+	// remove sysout from model
+	// save, load
 	public static final String UNRECOGNIZED_COMMAND = "Command is not recognized.";
 	
 	public void start() throws ItemException, CharacterException {

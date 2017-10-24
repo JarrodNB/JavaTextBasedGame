@@ -14,15 +14,16 @@ import Models.RoomPuzzle;
 
 public class GameRooms {
 
+	//done
 	public static Room getCrashSite() {
 		String description = "You wake up in a forest, dazed but uninjured. You stand up and look at your ship, which is missing many of it’s vital pieces"
-				+ " from your encounter with a band of space pirates. There is no way that the ship "
+				+ " from your encounter with a band of space pirates.\n There is no way that the ship "
 				+ "can fly in it’s current condition, so you must find another way to get off this pla"
-				+ "net. To the north, there appears to be a building, so maybe it would be best to investigate.";
+				+ "net.\n To the north, there appears to be a building, so maybe it would be best to investigate.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getFirstPuzzle());
-		RoomGold roomGold = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getWornoutRobot(GameItems.getElixir(1), 0));
+		RoomPuzzle roomPuzzle = null;
+		RoomGold roomGold = new RoomGold(100, "Storage Container");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Laboratory", false);
 		exits.put("Portal Room", false);
@@ -30,16 +31,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getLaboratory() {
 		String description = "The remains of the destroyed robot lay on the floor. The fight "
 				+ "with the robot destroyed all machinery in the room, meaning that "
-				+ "getting information from the room is no longer an option."
+				+ "getting information from the room is no longer an option.\n"
 				+ " Behind you is the exit of the lab, and forward, there is a door to another room.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getSixthPuzzle());
+		RoomGold roomGold = new RoomGold(100, "Storage Container");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Crash Site", false);
 		exits.put("Portal Room", false);
@@ -47,13 +48,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getPortalRoom() {
 		String description = "You enter a room with a single portal,"
 				+ " which is currently turned on and active.";
 		List<RoomItem> roomItems = new ArrayList<>();
 		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
-		RoomMonster roomMonster = new RoomMonster(GameMonsters.getWornoutRobot(100));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getWornoutRobot(GameItems.getPlasmaKnife(1), 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -64,10 +65,10 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done. add quest giver
 	public static Room getHomeBase() {
 		String description = "Upon exiting the portal, you enter a base located on the moon. The room is filled with"
-				+ " 4 portals labelled Mercury, Venus, Earth, and Mars."
+				+ " 4 portals labelled Mercury, Venus, Earth, and Mars.\n"
 				+ " There is also a shop keeper there, who looks at you, hoping that you came to buy something.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
@@ -87,15 +88,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getUmbriel() {
 		String description = "Of all the moons of Uranus, Umbriel is the darkest, "
-				+ "very little sunlight reaches the surface. Unwilling to found a colony on this"
+				+ "very little sunlight reaches the surface.\n Unwilling to found a colony on this"
 				+ " moon, the humans created a large prison complex here";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getElixir(1), "Bag"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getDefenseDrone(null, 100));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Barrel");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Home Base", true);
 		exits.put("Titania", true);
@@ -105,12 +107,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getTitania() {
 		String description = "Known for its high winds, numerous craters and canyons,"
 				+ " humans established underground colonies here to hunt for resources";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMineral(1), "Hole"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getDefenseDrone(null, 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -120,14 +123,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getAriel() {
-		String description = "Ariel has vast wide-open plains that humans once used for farming."
+		String description = "Ariel has vast wide-open plains that humans once used for farming.\n"
 				+ " After this moon's abandonment."
-				+ " Agricultural vil-lages remain scattered throughout the colony may prove useful.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+				+ " The Agricultural villages remain scattered throughout the colony may prove useful.";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getRuffians(GameItems.getElixir(1), 0));
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getSecondPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Titania", true);
@@ -137,13 +141,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getOberon() {
 		String description = "This large, heavily cratered moon has been set "
-				+ "up as a research station by humans,"
-				+ " now abandoned, the research station gives rise to many secrets...";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+				+ "up as a research station by humans.\n"
+				+ " Now abandoned, the research station gives rise to many secrets...";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getElixir(1), "Cabinet"));
+		roomItems.add(new RoomItem(GameItems.getMineral(1), "Hole"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getMadScientist(GameItems.getRadar(), 0));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -153,14 +159,14 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getTriton() {
 		String description = "Triton is an extremely large moon. Its "
-				+ "surface is completely covered by a mostly frozen nitrogen water-ice crust."
-				+ " Since the moon is cold and barren humans avoided colonizing it.";
+				+ "surface is completely covered by a mostly frozen nitrogen water-ice crust.\n"
+				+ " Since the moon is cold and barren, humans avoid colonizing it.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getFireGiant(GameItems.getCockpit(), 100));
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getTenthPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Home Base", true);
@@ -169,12 +175,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getNereid() {
 		String description = "This is the third largest moon of Neptune"
-				+ " and contained valuable resources sought after by humans."
+				+ " and contained valuable resources sought after by humans.\n"
 				+ " They eventually mined the moon hollow and left only equipment behind.";
-		List<RoomItem> roomItems = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMineral(1), "Hole"));
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
@@ -186,13 +193,14 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getNeso() {
 		String description = "Neso is a small non-spherical moon that is 48"
 				+ " million kilo-meters from Neptune. This moon was used as a "
 				+ "religious cult who believed Neptunes big blue spot contained secrets to immortality.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getRuffians(null, 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -201,14 +209,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getNaiad() {
 		String description = "This moon is the closest satellite to Neptune and was"
-				+ " once a thriving trading colony that humans lived on, due to tidal"
-				+ " stretching humans had to leave before the moon would be ripped apart.  ";
-		List<RoomItem> roomItems = null;
+				+ " once a thriving trading colony that humans lived on.\n Due to tidal"
+				+ " stretching humans had to leave before the moon would be ripped apart.";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMineral(2), "Bag"));
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getThirdPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Nereid", true);
@@ -217,15 +226,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getThalassa() {
 		String description = "Thalassa is a small, bare moon. Its' only purpose"
-				+ " for human colonist was to use it for sightseeing."
+				+ " for human colonists was to use it for sightseeing.\n"
 				+ " Some people may have left some valuable things behind.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirate(null, 200));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(300, "Storage Container");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Naiad", true);
 		Room room = new Room("Thalassa", description, roomItems, roomMonster, roomPuzzle, roomGold);
@@ -249,13 +258,14 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getDeimos() {
 		String description = "Human civilization was crucial to colonize on one of these moons"
 				+ " as human population was growing"
-				+ ", so this moon was filled with plenty hidden medication under the sand dunes.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+				+ ",\n so this moon was filled with plenty of hidden medication under the sand dunes.";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getDefenseDrone(null, 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -264,14 +274,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getPhobos() {
 		String description = "You walk into most disastrous room on the planet and the monster"
-				+ " is waiting for you in the corner. There is a medication "
+				+ " is waiting for you in the corner.\n There is a medication "
 				+ "in the room and few other rewards once you kill the monster.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
+		roomItems.add(new RoomItem(GameItems.getLaserRifle(1), "Hole"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getFireGiant(null, 200));
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getFourthPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Mars Surface", true);
@@ -279,30 +291,31 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getTrapRoom() {
 		String description = "When you enter the room ,you see a trap holes"
-				+ " in front of you as well as across the room and the room is filled with "
+				+ " in front of you as well as across the room\n and the room is filled with "
 				+ "bunch of furniture and hidden treasure  box for the rewards.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
+		roomItems.add(new RoomItem(GameItems.getPlasmaSword(1), "Barrel"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getDefenseDrone(null, 0));
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getFifthPuzzle());
+		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Mars Surface", false);
 		Room room = new Room("Trap Room", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getWasteLand() {
-		String description = "You walk into most disastrous room on the planet and "
-				+ "the monster is waiting for you in the corner. "
-				+ "There is a medication in the room and few other rewards once you kill the monster.";
-		List<RoomItem> roomItems = null;
+		String description = "TODO";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Mars Surface", false);
 		Room room = new Room("Wasteland", description, roomItems, roomMonster, roomPuzzle, roomGold);
@@ -326,14 +339,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getLake() {
 		String description = "The city is covered with a lake on the left side with a "
-				+ "yacht on the corner to get to the white house for surprises."
+				+ "yacht on the corner to get to the white house for surprises.\n"
 				+ " On the left side, we have the rock covered tomb. Be adventurous to find hidden stuff!!";
-		List<RoomItem> roomItems = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getLaserRifle(1), "Hole"));
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getEighthPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Venus Surface", false);
@@ -341,43 +356,46 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getGhostTown() {
 		String description = "This is the best part of the city!! Due to enough amount "
-				+ "of sun UV rays, it got sand dunes and a city where there is life,"
+				+ "of sun UV rays, it got sand dunes and a city where there is life,\n"
 				+ " filled with pools and church. WATCH OUT!! There is something you could get harmed by.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Storage Container"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getRuffians(null, 100));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Venus Surface", false);
 		Room room = new Room("Ghost Town", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getVolcano() {
 		String description = "This the smallest city of the Venus and "
-				+ "also the city of natural disasters (Volcanoes and hurricanes)"
+				+ "also the city of natural disasters (Volcanoes and hurricanes)\n"
 				+ " on your way, there is wooden door blocking the way.";
-		List<RoomItem> roomItems = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getElixir(1), "Hole"));
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getSeventhPuzzle());
+		RoomGold roomGold = new RoomGold(100, "Bag");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Venus Surface", false);
 		Room room = new Room("Volcano", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getField() {
 		String description = "ALERT!! There is a gigantic terrific creature on a "
 				+ "hunger strike which is carnivorous."
-				+ " This is the last stage of the Venus. Good Luck!!";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+				+ " \nThis is the last stage of the Venus. Good Luck!!";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Hole"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getRuffians(null, 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -388,7 +406,7 @@ public class GameRooms {
 	}
 	
 	public static Room getMercurySurface() {
-		String description = "You see a power plant off in the distance.";
+		String description = "You see a large building in the distance.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
@@ -403,13 +421,14 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getOutsidePowerPlant() {
 		String description = "You stand outside of what appears to be a large white building"
-				+ " that is gated off. While it is not clear what exactly it is used for, "
+				+ " that is gated off.\n While it is not clear what exactly it is used for, "
 				+ "at first glance it appears to be a power plant of some sort.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Cabinet"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirate(null, 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -418,13 +437,14 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getGeneratorRoom() {
-		String description = "The center of the power plant appears to be a power plant. "
+		String description = "The center of the power plant appears to be a power plant.\n "
 				+ "While it is still able to function, there is very clearly visible damage"
 				+ " to the inside of the room, and a few parts appear to be missing.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(2), "Storage Container"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getFireGiant(GameItems.getEngine(), 100));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -433,12 +453,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getDestroyedWing() {
-		String description = "The west side of the plant is destroyed beyond repair."
+		String description = "The west side of the plant is destroyed beyond repair.\n"
 				+ " The back wall is non-existent, the only evidence"
 				+ " that it even existed at any point is a pile of rubble surrounding the hole.";
-		List<RoomItem> roomItems = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getElixir(1), "Storage Container"));
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
@@ -448,30 +469,32 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getManagerRoom() {
 		String description = "You enter what appears to be an office."
 				+ " A man sits behind a desk and stares at you, wondering what you are doing "
 				+ "in here. While he does not seem dangerous, he is wary of your presence.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getDefenseDrone(GameItems.getPlasmaSword(1), 0));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Mercury's Surface", false);
 		Room room = new Room("Manager's Room", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getTitan() {
 		String description = "This large moon is a barren orange color due to its "
-				+ "atmosphere.  The Surface of Titan is flat as it lacks huge craters and towering mountains. Tall dunes stretch across the surface"
-				+ " far and wide. Abandoned settlements stretch across the surface.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+				+ "atmosphere.\nThe Surface of Titan is flat as it lacks huge craters and towering mountains. Tall dunes stretch across the surface"
+				+ " far and wide.\n Abandoned settlements stretch across the surface.";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getElixir(1), "Bag"));
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirate(null, 100));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Hole");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Home Base", true);
 		exits.put("Enceladus", true);
@@ -482,16 +505,17 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getEnceladus() {
 		String description = "Enceladus is a white-like color due to the surface being made up "
-				+ "entirely of ice. Massive geysers frequently spew water from the moon's "
-				+ "Subsurface Ocean into space. Abandoned mining operations surround "
+				+ "entirely of ice.\n Massive geysers frequently spew water from the moon's "
+				+ "Subsurface Ocean into space.\n Abandoned mining operations surround "
 				+ "the geysers to collect materials around the area.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMineral(1), "Hole"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirate(null, 100));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Titan", true);
 		exits.put("Pandora", true);
@@ -500,13 +524,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getMimas() {
 		String description = "Mimas is a small moon that was considered to insubstantial"
-				+ " to establish a human colony, as a result, "
+				+ " to establish a human colony,\n as a result, "
 				+ "pirates who raid trade shipments established a base here, now long abandoned.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirateCaptian(GameItems.getComms(), 0));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -517,15 +541,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getPandora() {
 		String description = "Pandora is an extremely small heavily cratered, moon. "
-				+ "In the future, it is used as a staging facility to facilitate"
-				+ " travel between the human colonies. the remains of a star-port is still there.";
-		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+				+ "\nIn the future, it is used as a staging facility to facilitate"
+				+ " travel between the human colonies. The remains of a star-port is still there.";
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Storage Container"));
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getSpacePirate(GameItems.getPlasmaPistol(1), 0));
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(500, "Hole");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Titan", true);
 		exits.put("Enceladus", true);
@@ -534,16 +559,16 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getAtlas() {
 		String description = "Atlas is an extremely small disk-shaped moon that orbits "
-				+ "closely around Saturn's rings. Future nations agreed to make this moon "
+				+ "closely around Saturn's rings.\n Future nations agreed to make this moon "
 				+ "neutral to all governments and the moon became a hotbed for tourism to view Saturn’s incredible rings."
-				+ " Abandoned hotels and attractions sprawl across the surface of Atlas.";
+				+ " \nAbandoned hotels and attractions sprawl across the surface of Atlas.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(200, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Titan", true);
 		exits.put("Enceladus", true);
@@ -552,13 +577,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getEuropa() {
-		String description = "This is a big moon of Jupiter and has subsurface oceans."
+		String description = "This is a big moon of Jupiter and has subsurface oceans.\n"
 				+ " Human colonist set up civilizations"
 				+ " in these subsurface oceans that also contain life native to the moon.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getKraken(GameItems.getWings(), 0));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -569,15 +594,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getGanymede() {
 		String description = "Ganymede is the biggest moon in the solar system which"
-				+ " attracted many humans to come and colonize it. "
+				+ " attracted many humans to come and colonize it.\n "
 				+ "It rapidly became the most densely populated place in the solar system.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
-		RoomGold roomGold = null;
+		RoomGold roomGold = new RoomGold(200, "Bag");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Europa", true);
 		exits.put("Io", true);
@@ -586,13 +611,13 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getIo() {
 		String description = "This moon has over 400 active volcanoes. "
-				+ "Scientist attempt-ed to set up geothermal power plants on the moon but the volcanoes "
+				+ "\nScientist attempted to set up geothermal power plants on the moon but the volcanoes "
 				+ "were less dormant than the scientist expected leaving only remains behind.";
 		List<RoomItem> roomItems = null;
-		RoomMonster roomMonster = null;
+		RoomMonster roomMonster = new RoomMonster(GameMonsters.getFireGiant(null, 200));
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
@@ -603,14 +628,15 @@ public class GameRooms {
 		room.setExits(exits);
 		return room;
 	}
-	
+	// done
 	public static Room getAmalthea() {
-		String description = "This moon has an amazing view of Jupiter. Because of its great"
+		String description = "This moon has an amazing view of Jupiter.\n Because of its great"
 				+ " view a religious cult was set up on the moon to worship"
 				+ " Jupiter's big red spot.";
-		List<RoomItem> roomItems = null;
+		List<RoomItem> roomItems = new ArrayList<>();
+		roomItems.add(new RoomItem(GameItems.getMineral(1), "Barrel"));
 		RoomMonster roomMonster = null;
-		RoomPuzzle roomPuzzle = null;
+		RoomPuzzle roomPuzzle = new RoomPuzzle(GamePuzzles.getFirstPuzzle());
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
 		exits.put("Ganymede", true);
@@ -660,6 +686,5 @@ public class GameRooms {
 		rooms.put("Io", getIo());
 		rooms.put("Amalthea", getAmalthea());
 		return rooms;
-		
 	}
 }
