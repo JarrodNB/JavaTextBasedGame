@@ -39,6 +39,9 @@ public class Shopping {
 	}
 	
 	private static void shopInput(String input, Player player) throws CharacterException, ItemException, YouDontHaveThatException, WeaponException {
+		if (input.equals("")) {
+			return;
+		}
 		String[] inputArray = input.split(" ");
 		for (int index = 0; index < inputArray.length; index++) {
 			inputArray[index] = inputArray[index].substring(0, 1).toUpperCase() + inputArray[index].substring(1, inputArray[index].length());

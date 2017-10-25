@@ -13,7 +13,6 @@ import Models.RoomMonster;
 import Models.RoomPuzzle;
 
 public class GameRooms {
-
 	//done
 	public static Room getCrashSite() {
 		String description = "You wake up in a forest, dazed but uninjured. You stand up and look at your ship, which is missing many of it’s vital pieces"

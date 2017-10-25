@@ -40,7 +40,9 @@ public class RoomHandler {
 	}
 	
 	private static String roomCommands(Room room, String input) throws PlayerIsDeadException, ItemException, CharacterException {
-		
+		if (input.equals("")) {
+			return null;
+		}
 		if (input.equalsIgnoreCase("save")) {
 			SaveGame.save(room.getUniverse(), room);
 			System.out.println("The game has been saved.");

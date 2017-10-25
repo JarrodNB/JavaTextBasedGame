@@ -67,7 +67,9 @@ public class Arena {
 	}
 	
 	private static void fightInput(Player player, Monster monster, String userInput) throws PlayerIsDeadException, MonsterIsDeadException {
-		
+		if (userInput.equals("")) {
+			return;
+		}
 		switch (userInput) {
 			
 			case "attack":

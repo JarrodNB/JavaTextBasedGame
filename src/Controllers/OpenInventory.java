@@ -35,6 +35,9 @@ public class OpenInventory {
 	}
 	
 	private static void inventoryInput(Player player, String input) throws YouDontHaveThatException, PlayerIsDeadException, ItemException {
+		if (input.equals("")) {
+			return;
+		}
 		
 		String[] inputArray = input.split(" ");
 
