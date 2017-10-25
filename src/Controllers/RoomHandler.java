@@ -39,6 +39,7 @@ public class RoomHandler {
 	private static String roomCommands(Room room, String input) throws PlayerIsDeadException, ItemException, CharacterException {
 		
 		if (input.equals("")) {
+			System.out.println("An empty command?");
 			return null;
 		}
 		
