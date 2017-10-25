@@ -72,11 +72,11 @@ public class OpenInventory {
 		}
 		
 		else if (inputArray[0].equalsIgnoreCase("unequip")) {
-			if (inputArray[1].equals("weapon")) {
+			if (inputArray.length > 1 && inputArray[1].equals("weapon")) {
 				player.unequipWeapon();
 				System.out.println("Your weapon has been unequipped.");
 			}
-			else if (inputArray[1].equals("armor")) {
+			else if (inputArray.length > 1 && inputArray[1].equals("armor")) {
 				player.unequipArmor();
 				System.out.println("Your armor has been unequipped");
 			}
