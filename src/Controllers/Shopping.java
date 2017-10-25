@@ -67,7 +67,7 @@ public class Shopping {
 				} else {
 					System.out.println("Thats not a real Item.");
 				}
-			} else {
+			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
 				Item item;
 				if (shop.getStockItem(itemName) != null) {
@@ -76,6 +76,8 @@ public class Shopping {
 				} else {
 					System.out.println("Thats not a real Item.");
 				}
+			} else {
+				System.out.println("Buy what?");
 			}
 		}
 		
@@ -99,7 +101,7 @@ public class Shopping {
 				} else {
 					System.out.println("Thats not a real Item.");
 				}
-			} else {
+			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
 				Item item;
 				if (shop.getStockItem(itemName) != null) {
@@ -108,6 +110,8 @@ public class Shopping {
 				} else {
 					System.out.println("Thats not a real Item.");
 				}
+			} else {
+				System.out.println("Sell what?");
 			}
 		}
 		
@@ -118,9 +122,11 @@ public class Shopping {
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				System.out.println(shop.examineItem(itemName));
-			} else {
+			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
 				System.out.println(shop.examineItem(itemName));
+			} else {
+				System.out.println("Examine what?");
 			}
 		}
 		

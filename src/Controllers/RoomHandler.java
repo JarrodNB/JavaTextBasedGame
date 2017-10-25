@@ -20,17 +20,14 @@ public class RoomHandler {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println(room.getDescription());
 		while (true) {
-			String input = scanner.nextLine();//testing.toLowerCase();
+			String input = scanner.nextLine().toLowerCase();
 			String destination = roomCommands(room, input);
 			if (destination != null && room.isExitInRoom(destination)) {
 				System.out.println("You are traveling to " + destination);
 				//scanner.close();
-				//System.out.println(destination); // testing
-				//System.out.println(room.getUniverse().getRoom(destination));// testing
 				try {
 					RoomHandler.enter(room.getUniverse().getRoom(destination));
 				} catch (NullPointerException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (destination != null) {
@@ -40,26 +37,28 @@ public class RoomHandler {
 	}
 	
 	private static String roomCommands(Room room, String input) throws PlayerIsDeadException, ItemException, CharacterException {
+		
 		if (input.equals("")) {
 			return null;
 		}
-		if (input.equalsIgnoreCase("save")) {
+		
+		else if (input.equalsIgnoreCase("save")) {
 			SaveGame.save(room.getUniverse(), room);
 			System.out.println("The game has been saved.");
 			return null;
 		}
 		
-		if (input.equalsIgnoreCase("look")) {
+		else if (input.equalsIgnoreCase("look")) {
 			displayRoomObjects(room);
 			return null;
 		}
 		
-		if (input.equalsIgnoreCase("open inventory")) {
+		else if (input.equalsIgnoreCase("open inventory")) {
 			OpenInventory.openInventory(room.getUniverse().getPlayer());
 			return null;
 		} 
 		
-		 if (input.startsWith("fight")) {
+		else if (input.startsWith("fight")) {
 			if (room.getRoomMonster() != null && room.getRoomMonster().isInRoom()) {
 				Arena.fight(room.getUniverse().getPlayer(), room.getRoomMonster());
 				return null;
@@ -69,7 +68,7 @@ public class RoomHandler {
 			}
 		}
 		
-		if (input.equalsIgnoreCase("solve puzzle")) {
+		else if (input.equalsIgnoreCase("solve puzzle")) {
 			if (room.getRoomPuzzle() == null || !room.getRoomPuzzle().isInRoom()) {
 				System.out.println("There is no puzzle to be solved.");
 				return null;
@@ -80,7 +79,7 @@ public class RoomHandler {
 			return null;
 		}
 		
-		if (input.equalsIgnoreCase("examine monster")) {
+		else if (input.equalsIgnoreCase("examine monster")) {
 			if (room.getRoomMonster() != null && room.getRoomMonster().isInRoom()) {
 				System.out.println(room.getRoomMonster().getMonster().getDescription());
 				return null;
@@ -96,7 +95,7 @@ public class RoomHandler {
 			inputArray[index] = inputArray[index].substring(0, 1).toUpperCase() + inputArray[index].substring(1, inputArray[index].length());
 		}
 
-		if (inputArray[0].equalsIgnoreCase("check")) {
+		if (inputArray[0].equalsIgnoreCase("check") && inputArray.length > 1) {
 			if (length == 3) {
 				String containerName = inputArray[1] + " " + inputArray[2];
 				getItemFromContainer(room, containerName);
@@ -107,7 +106,7 @@ public class RoomHandler {
 			}
 		}
 		
-		if (input.startsWith("go to")) {
+		else if (input.startsWith("go to") && inputArray.length > 2) {
 			if (length == 4) {
 				return inputArray[2] + " " + inputArray[3];
 			} else if (length == 5) {
@@ -117,7 +116,7 @@ public class RoomHandler {
 			}
 		}
 		
-		if (input.equalsIgnoreCase("shop")) {
+		else if (input.equalsIgnoreCase("shop")) {
 			if (room.containsShop()) {
 				Shopping.shop(room.getUniverse().getPlayer());
 				return null;
@@ -127,20 +126,14 @@ public class RoomHandler {
 			}
 		}
 		
-		if (input.equalsIgnoreCase("help")) {
+		else if (input.equalsIgnoreCase("help")) {
 			System.out.println(HELP);
 			return null;
 		}
-		System.out.println(GameEngine.UNRECOGNIZED_COMMAND);
 		
+		System.out.println(GameEngine.UNRECOGNIZED_COMMAND);
 		return null;
 	}
-	
-	
-	
-	
-	
-	
 	
 	public static void displayRoomObjects(Room room) {
 		

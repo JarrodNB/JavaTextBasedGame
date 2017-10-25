@@ -48,9 +48,11 @@ public class OpenInventory {
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				UseItem.useItem(player, itemName);
-			} else {
+			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
 				UseItem.useItem(player, itemName);
+			} else {
+				System.out.println("Use what?");
 			}
 		}
 		
@@ -65,9 +67,11 @@ public class OpenInventory {
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				equip(player, itemName);
-			} else {
+			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
 				equip(player, itemName);
+			} else {
+				System.out.println("Equip what?");
 			}
 		}
 		
@@ -79,6 +83,8 @@ public class OpenInventory {
 			else if (inputArray.length > 1 && inputArray[1].equals("armor")) {
 				player.unequipArmor();
 				System.out.println("Your armor has been unequipped");
+			} else {
+				System.out.println("Unequip what?");
 			}
 		}
 		
@@ -89,11 +95,11 @@ public class OpenInventory {
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
-			} else {
-				if (inputArray.length > 1) {
+			} else if (inputArray.length == 2) {
 					String itemName = inputArray[1];
 					System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
-				}
+			} else {
+				System.out.println("Examine what?");
 			}
 		}
 		

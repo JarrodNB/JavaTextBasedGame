@@ -14,6 +14,10 @@ public class NewGame {
 		System.out.println("Select a name for your player.");
 		Scanner scanner = new Scanner(System.in);
 		String name = scanner.nextLine();
+		while(!validName(name)) {
+			System.out.println("Your name may only contain letters and may not be blank. Enter another name.");
+			name = scanner.nextLine();
+		}
 		Inventory inventory = new Inventory();
 		try {
 			Player player = new Player(name, 0, 1, 20, 50, inventory);
@@ -24,5 +28,17 @@ public class NewGame {
 			//scanner.close();
 		}
 		return null;
+	}
+	
+	private static boolean validName(String name) {
+		if (name.equals("")) {
+			return false;
+		}
+		else if (name.matches("[a-zA-Z]+")) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
