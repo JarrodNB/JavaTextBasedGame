@@ -2,11 +2,16 @@
 package Models;
 
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Room {
+public class Room implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2488440222760396526L;
 	private String name;
 	private String description;
 	private List<RoomItem> roomItems;

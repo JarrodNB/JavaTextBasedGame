@@ -1,10 +1,16 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import GameExceptions.ItemException;
 
-public class Item {
+public class Item implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5443372998567698175L;
 	private int id; // id of item
 	private String name; // name of item
 	private String description; // description of item

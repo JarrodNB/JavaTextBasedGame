@@ -1,15 +1,17 @@
 
 package Models;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import DataStorage.GameItems;
 
-public class Shop {
+public class Shop implements Serializable{
 
-	// add ignore case to all equals
-	// check models for interaction with controller
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4431145987534145650L;
 	private Map<String, Item> stock;
 	
 	public Shop() {

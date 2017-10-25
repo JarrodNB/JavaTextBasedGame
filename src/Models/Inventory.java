@@ -1,14 +1,19 @@
 
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import GameExceptions.ItemException;
 import GameExceptions.YouDontHaveThatException;
 
-public class Inventory {
+public class Inventory implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7184852803722533100L;
 	private List<Item> inventory;
 	
 	public Inventory() {

@@ -1,8 +1,14 @@
 
 package Models;
 
-public class Puzzle {
+import java.io.Serializable;
 
+public class Puzzle implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3268064475105672974L;
 	private int id;
 	private String question; 
 	private String answer; 

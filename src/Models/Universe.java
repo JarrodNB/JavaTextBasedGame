@@ -1,12 +1,17 @@
 
 package Models;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import DataStorage.GameRooms;
 
-public class Universe {
+public class Universe implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 260071071241109671L;
 	private Map<String, Room> rooms;
 	private Player player;
 	private  Room currentRoom;

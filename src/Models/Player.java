@@ -1,13 +1,19 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import DataStorage.GameItems;
 import GameExceptions.CharacterException;
 import GameExceptions.ItemException;
 import GameExceptions.YouDontHaveThatException;
 
-public class Player extends Character {
+public class Player extends Character implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 335996075941846318L;
 	private Weapon currentWeapon;
 	private Armor currentArmor;
 	

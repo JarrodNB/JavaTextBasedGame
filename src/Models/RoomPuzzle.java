@@ -1,8 +1,14 @@
 
 package Models;
 
-public class RoomPuzzle extends RoomObject{
+import java.io.Serializable;
 
+public class RoomPuzzle extends RoomObject implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -902475575781932775L;
 	private Puzzle puzzle;
 	
 	public RoomPuzzle(Puzzle puzzle) {

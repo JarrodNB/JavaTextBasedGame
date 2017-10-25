@@ -1,11 +1,17 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import GameExceptions.ArmorException;
 import GameExceptions.ItemException;
 
-public class Armor extends Item {
+public class Armor extends Item implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3769366528859440638L;
 	private int defense;
 	
 	public Armor(int id, String name, String description, int buyValue, int quantity, int defense) throws ItemException, ArmorException {

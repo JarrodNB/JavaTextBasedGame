@@ -113,7 +113,6 @@ public class OpenInventory {
 	}
 	
 	private static void equip(Player player, String itemName) throws YouDontHaveThatException, ItemException {
-		System.out.println(itemName);
 		if (player.getInventory().hasItem(itemName)) {
 			Item item = player.getInventory().getItemNoRemoval(itemName);
 			if (item instanceof Weapon) {

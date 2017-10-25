@@ -16,8 +16,7 @@ public class GameEngine {
 		engine.start();
 	}
 	// fix strings
-	// remove sysout from model
-	// save, load
+
 	public static final String UNRECOGNIZED_COMMAND = "Command is not recognized.";
 	
 	public void start() throws ItemException, CharacterException {
@@ -37,8 +36,10 @@ public class GameEngine {
 				continue;
 			}
 			try {
-				//scanner.close();
-				RoomHandler.enter(universe.getCurrentRoom());
+				if (universe != null) {
+					//scanner.close();
+					RoomHandler.enter(universe.getCurrentRoom());
+				}
 			} catch (PlayerIsDeadException dead) {
 				universe.getPlayer().setGold(universe.getPlayer().getGold() / 2);
 				universe.setCurrentRoom(universe.getRoom("Home Base"));

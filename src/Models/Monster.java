@@ -1,11 +1,16 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import GameExceptions.CharacterException;
 
-public class Monster extends Character {
+public class Monster extends Character implements Serializable{
 
-	// what to put here?
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5904180858315233690L;
 	private String description;
 	
 	public Monster(String name,String description, int attack, int maxHealth, int gold, Inventory inventory)

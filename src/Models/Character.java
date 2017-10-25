@@ -1,12 +1,18 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import GameExceptions.CharacterException;
 import GameExceptions.MonsterIsDeadException;
 import GameExceptions.PlayerIsDeadException;
 
-public class Character {
+public class Character implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8505969773094231323L;
 	private String name;
 	private int maxHealth;
 	private int healthPoints;

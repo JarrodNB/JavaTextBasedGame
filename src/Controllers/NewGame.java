@@ -1,6 +1,7 @@
 
 package Controllers;
 
+import java.io.File;
 import java.util.Scanner;
 
 import GameExceptions.CharacterException;
@@ -9,8 +10,9 @@ import Models.Player;
 import Models.Universe;
 
 public class NewGame {
-    // not null name, no special characters
+
 	public static Universe newGame() {
+		new File("C:\\Voyager\\").mkdir();
 		System.out.println("Select a name for your player.");
 		Scanner scanner = new Scanner(System.in);
 		String name = scanner.nextLine();
@@ -20,7 +22,7 @@ public class NewGame {
 		}
 		Inventory inventory = new Inventory();
 		try {
-			Player player = new Player(name, 0, 1, 20, 50, inventory);
+			Player player = new Player(name, 0, 1, 30, 50, inventory);
 			//scanner.close();
 			return new Universe(player);
 		} catch (CharacterException e) {

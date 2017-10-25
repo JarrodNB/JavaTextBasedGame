@@ -1,8 +1,14 @@
 
 package Models;
 
-public class RoomGold extends RoomObject{
+import java.io.Serializable;
 
+public class RoomGold extends RoomObject implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8176874659536892431L;
 	private int gold;
 	private String containerName;
 	

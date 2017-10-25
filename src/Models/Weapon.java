@@ -1,11 +1,17 @@
 
 package Models;
 
+import java.io.Serializable;
+
 import GameExceptions.ItemException;
 import GameExceptions.WeaponException;
 
-public class Weapon extends Item {
+public class Weapon extends Item implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4970997342022388785L;
 	private int attack;
 	private int upgradeAmount;
 	private int upgradeLevel;
