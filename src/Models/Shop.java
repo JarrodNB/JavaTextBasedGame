@@ -27,7 +27,16 @@ public class Shop {
 	
 
 	public String examineItem(String name) {
-		return stock.get(name).getDescription();
+		String description;
+		try {
+			description = stock.get(name).getDescription();
+		} catch (NullPointerException e) {
+			description = null;
+		}
+		if (description == null) {
+			return "I don't carry that item.";
+		} 
+		return description;
 	}
 	
 	public Item getStockItem(String item) {
