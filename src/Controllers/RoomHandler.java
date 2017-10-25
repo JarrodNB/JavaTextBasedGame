@@ -12,8 +12,7 @@ import Models.Room;
 import Models.RoomItem;
 
 public class RoomHandler {
-	
-	// add save add monster examine
+	// add ship mechanic to give quests
 	private static final String HELP = "Your possible commands are look, check containerName,"
 			+ " fight, examine monster, solve puzzle, open inventory, save, and go to RoomName";
 

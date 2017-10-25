@@ -42,7 +42,7 @@ public class GameMonsters {
 				inventory = new Inventory();
 				inventory.addItem(item);
 			}
-			return new Monster("Defense Drone", "These defense drones were created to defend research stations from space pirates, however an evil scientist has hacked them and turned them against the player! They attack with a deadly laser but are somewhat weak.", 1, 5, goldAmount, inventory);
+			return new Monster("Defense Drone", "These defense drones were created to defend research stations from space pirates, however an evil scientist has hacked them and turned them against the player! They attack with a deadly laser but are somewhat weak.", 2, 7, goldAmount, inventory);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -98,7 +98,7 @@ public class GameMonsters {
 				inventory = new Inventory();
 				inventory.addItem(item);
 			}
-			return new Monster("Worn-out Robot", "Old robot that you find on the surface of earth. It’s not very strong.", 1, 5, goldAmount, inventory);
+			return new Monster("Worn-out Robot", "Old robot that you find on the surface of earth. It’s not very strong.", 2, 5, goldAmount, inventory);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
@@ -112,7 +112,7 @@ public class GameMonsters {
 				inventory = new Inventory();
 				inventory.addItem(item);
 			}
-			return new Monster("Ruffians", "Thieves that disrupt and steal from colonists", 1, 6, goldAmount, inventory);
+			return new Monster("Ruffians", "Thieves that disrupt and steal from colonists", 2, 6, goldAmount, inventory);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;

@@ -14,7 +14,7 @@ import Models.RoomMonster;
 public class Arena {
 	
 	private static final int DEFEND = 2; // defense to be added when defending
-	private static final String HELP = "Your possible commands are fight, defend, open inventory, and retreat.";
+	private static final String HELP = "Your possible commands are attack, defend, open inventory, and retreat.";
 
 	public static void fight(Player player, RoomMonster roomMonster) throws PlayerIsDeadException{
 		Monster monster = roomMonster.getMonster();
@@ -44,6 +44,7 @@ public class Arena {
 					player.setGold(player.getGold() + monster.getGold());
 					System.out.println("You have recieved " + monster.getGold() + " gold!");
 				}
+				System.out.println("You are back in the same room.");
 				roomMonster.setIsInRoom(false);
 			} catch (CharacterException | ItemException e) {
 				System.out.println(e.getMessage());
@@ -59,8 +60,9 @@ public class Arena {
 		if (playerDamage < 1) {
 			System.out.println(monster.getName() + " was unable to damage you!");
 		} else {
-			player.takeDamage(playerDamage);
 			System.out.println(monster.getName() + " attacked you and did " + playerDamage + " damage!");
+			player.takeDamage(playerDamage);
+			System.out.println("You now have " + player.getHealthPoints() + " hp.");
 		}
 	}
 	

@@ -677,7 +677,7 @@ public class GameRooms {
 		rooms.put("Destroyed Wing", getDestroyedWing());
 		rooms.put("Manager's Room", getManagerRoom());
 		rooms.put("Titan", getTitan());
-		rooms.put("Endeladus", getEnceladus());
+		rooms.put("Enceladus", getEnceladus());
 		rooms.put("Mimas", getMimas());
 		rooms.put("Pandora", getPandora());
 		rooms.put("Atlas", getAtlas());

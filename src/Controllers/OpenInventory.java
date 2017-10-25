@@ -13,8 +13,7 @@ import Models.Weapon;
 
 public class OpenInventory {
 
-	// Make exception string prettier
-	private static final String HELP = "your possible commands are use itemName, examine itemName, equip itemName, unequip weapon/armor, stats, or exit.";
+	private static final String HELP = "Your possible commands are use itemName, examine itemName, equip itemName, unequip weapon/armor, stats, or exit.";
 
 	public static void openInventory(Player player) {
 		System.out.println(player.getInventory().toString());
@@ -22,7 +21,7 @@ public class OpenInventory {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			String input = scanner.nextLine();
-			if (input.equals("exit")) {
+			if (input.equalsIgnoreCase("exit")) {
 				//scanner.close();
 				return;
 			}

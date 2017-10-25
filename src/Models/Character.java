@@ -52,8 +52,7 @@ public class Character {
 		return this.inventory;
 	}
 	
-	protected void setInventory(Inventory inventory) throws CharacterException {
-		// testing      if (inventory == null) throw new CharacterException("inventory cannot be null " + getClass().getSimpleName());
+	protected void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
 
@@ -71,6 +70,7 @@ public class Character {
 	}
 	
 	public void takeDamage(int amount) throws PlayerIsDeadException, MonsterIsDeadException {
+		//if (amount < 0)
 		if (this.healthPoints - amount <= 0) {
 			if (this instanceof Player) {
 				throw new PlayerIsDeadException();
@@ -78,7 +78,6 @@ public class Character {
 				throw new MonsterIsDeadException();
 			}
 		} else {
-			System.out.println(this + " took " + amount); // testing
 			this.healthPoints -= amount;
 		}
 	}
@@ -95,11 +94,12 @@ public class Character {
 	
 	private void setBaseAttack(int attack) throws CharacterException {
 		if (attack < 0) throw new CharacterException("base attack can not be less then 0" + getClass().getSimpleName());
+		this.baseAttack = attack;
 	}
 	
 	@Override
 	public String toString() {
-		return this.name + " Health: " + this.healthPoints + " Gold: " + this.gold; // add calc attack?
+		return this.name + " Health: " + this.healthPoints + " Gold: " + this.gold;
 	}
 	
 }

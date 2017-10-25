@@ -17,6 +17,10 @@ public class Player extends Character {
 		this.currentArmor = GameItems.getPilotSuit(1);
 	}
 	
+	public Weapon getCurrentWeapon() {
+		return this.currentWeapon;
+	}
+	
 	public int getCalcAttack() {
 		if (this.currentWeapon == null) return getBaseAttack();
 		return this.getBaseAttack() + this.currentWeapon.getAttack();
@@ -66,6 +70,11 @@ public class Player extends Character {
 			this.currentArmor = null;
 			this.getInventory().addItem(armor);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " Attack: " + getCalcAttack() + " Defense: " + this.getCalcDefense();
 	}
 	
 }

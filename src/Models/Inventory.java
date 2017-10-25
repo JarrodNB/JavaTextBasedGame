@@ -33,11 +33,11 @@ public class Inventory {
 			Item inventoryItem = inventory.get(index);
 			if (item.getName().equals(inventoryItem.getName())) {
 				inventoryItem.setQuantity(inventoryItem.getQuantity() + item.getQuantity());
-				System.out.println(item + " added to what you had + " + inventoryItem.getQuantity()); // testing
+				//System.out.println(item + " added to what you had + " + inventoryItem.getQuantity()); // testing
 				return;
 			}
 		}
-		System.out.println(item + " Added"); // testing
+		//System.out.println(item + " Added"); // testing
 		inventory.add(item);
 	}
 	
@@ -47,11 +47,11 @@ public class Inventory {
 			if (inventoryItem.getName().equalsIgnoreCase(item.getName())) {
 				if (inventoryItem.getQuantity() - quantity > 0) {
 					inventoryItem.setQuantity(inventoryItem.getQuantity() - quantity);
-					System.out.println(inventoryItem.getName() + " - " + quantity + " removed");// testing
+					//System.out.println(inventoryItem.getName() + " - " + quantity + " removed");// testing
 					return;
 				} else if (inventoryItem.getQuantity() - quantity == 0) {
 					inventory.remove(inventoryItem);
-					System.out.println(inventoryItem.getName() + " removed"); // testing
+					//System.out.println(inventoryItem.getName() + " removed"); // testing
 					return;
 				} else {
 					throw new YouDontHaveThatException("can not remove more items then inventory has" + getClass().getSimpleName());
@@ -93,10 +93,13 @@ public class Inventory {
 	
 	@Override
 	public String toString() {
+		if (inventory.isEmpty()) {
+			return "";
+		}
 		String result = "";
 		for (Item item : inventory) {
 			result += item.toString() + ", ";
 		}
-		return result.trim();//.substring(0, result.length()-1);
+		return result.substring(0, result.length()-2);
 	}
 }

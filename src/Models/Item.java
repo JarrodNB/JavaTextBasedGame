@@ -46,7 +46,7 @@ public class Item {
 	}
 
 	private void setId(int id) throws ItemException {
-		if (id < 0) throw new ItemException("id can not be negative" + getClass().getSimpleName());
+		if (id < 0) throw new ItemException("Id can not be negative" + getClass().getSimpleName());
 		this.id = id;
 	}
 
@@ -62,7 +62,7 @@ public class Item {
 	
 	@Override
 	public String toString(){
-		return this.name + " " + this.quantity;
+		return this.name + " Quantity: " + this.quantity;
 	}
 	
 }

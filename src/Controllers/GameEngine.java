@@ -1,4 +1,4 @@
-// observable to show player stats
+
 package Controllers;
 
 import java.util.Scanner;
@@ -21,10 +21,10 @@ public class GameEngine {
 	public static final String UNRECOGNIZED_COMMAND = "Command is not recognized.";
 	
 	public void start() throws ItemException, CharacterException {
-		
+		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			System.out.println("Welcome. New game or load game?");
-			Scanner scanner = new Scanner(System.in);
+			
 			String input = scanner.nextLine();
 			Universe universe = null;
 			if (input.equalsIgnoreCase("new game")) {
@@ -46,7 +46,7 @@ public class GameEngine {
 				SaveGame.save(universe, universe.getCurrentRoom());
 				start();
 			} 
-		} 
+		}
 	}
 }
 
