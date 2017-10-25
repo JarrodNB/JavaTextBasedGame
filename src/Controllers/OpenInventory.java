@@ -90,8 +90,10 @@ public class OpenInventory {
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
 				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
 			} else {
-				String itemName = inputArray[1];
-				System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
+				if (inputArray.length > 1) {
+					String itemName = inputArray[1];
+					System.out.println(player.getInventory().getItemNoRemoval(itemName).getDescription());
+				}
 			}
 		}
 		
