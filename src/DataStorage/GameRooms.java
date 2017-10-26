@@ -420,7 +420,7 @@ public class GameRooms {
 		exits.put("Destroyed Wing", false);
 		exits.put("Manager's Room", false);
 		exits.put("Home Base", true);
-		Room room = new Room("Mercury's Surface", description, roomItems, roomMonster, roomPuzzle, roomGold);
+		Room room = new Room("Mercury Surface", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
 	}
@@ -435,7 +435,7 @@ public class GameRooms {
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
-		exits.put("Mercury's Surface", false);
+		exits.put("Mercury Surface", false);
 		Room room = new Room("Outside Power-Plant", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
@@ -451,7 +451,7 @@ public class GameRooms {
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
-		exits.put("Mercury's Surface", false);
+		exits.put("Mercury Surface", false);
 		Room room = new Room("Generator Room", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
@@ -467,7 +467,7 @@ public class GameRooms {
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = null;
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
-		exits.put("Mercury's Surface", false);
+		exits.put("Mercury Surface", false);
 		Room room = new Room("Destroyed Wing", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
@@ -482,7 +482,7 @@ public class GameRooms {
 		RoomPuzzle roomPuzzle = null;
 		RoomGold roomGold = new RoomGold(100, "Cabinet");
 		Map<String, Boolean> exits = new HashMap<String, Boolean>();
-		exits.put("Mercury's Surface", false);
+		exits.put("Mercury Surface", false);
 		Room room = new Room("Manager's Room", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setExits(exits);
 		return room;
@@ -674,7 +674,7 @@ public class GameRooms {
 		rooms.put("Ghost Town", getGhostTown());
 		rooms.put("Volcano", getVolcano());
 		rooms.put("Field", getField());
-		rooms.put("Mercury's Surface", getMercurySurface());
+		rooms.put("Mercury Surface", getMercurySurface());
 		rooms.put("Outside Power-Plant", getOutsidePowerPlant());
 		rooms.put("Generator Room", getGeneratorRoom());
 		rooms.put("Destroyed Wing", getDestroyedWing());
