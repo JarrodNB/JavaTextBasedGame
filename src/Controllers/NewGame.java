@@ -37,6 +37,11 @@ public class NewGame {
 			return false;
 		}
 		else if (name.matches("[a-zA-Z]+")) {
+			File fileCheck = new File("C:\\Voyager\\" + name + ".dat");
+			if (fileCheck.exists()) {
+				System.out.println("That name is taken.");
+				return false;
+			}
 			return true;
 		}
 		else {

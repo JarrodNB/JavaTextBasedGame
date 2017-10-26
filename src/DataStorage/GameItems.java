@@ -1,7 +1,9 @@
 
 package DataStorage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import GameExceptions.ArmorException;
@@ -180,7 +182,17 @@ public class GameItems {
 		stock.put("Law Enforcement Gear", getLawEnforcementGear(1));
 		stock.put("Military Gear", getMilitaryGear(1));
 		return stock;
-		
+	}
+	
+	public static List<Item> getShipParts(){
+		List<Item> list = new ArrayList<>();
+		list.add(getCockpit());
+		list.add(getComms());
+		list.add(getDefenseTurret());
+		list.add(getEngine());
+		list.add(getRadar());
+		list.add(getWings());
+		return list;
 	}
 	
 }

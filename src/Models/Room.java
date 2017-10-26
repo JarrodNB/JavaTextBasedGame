@@ -21,6 +21,7 @@ public class Room implements Serializable{
 	private RoomPuzzle roomPuzzel;
 	private RoomGold roomGold;
 	private boolean containsShop;
+	private boolean containsMechanic;
 	
 	public Room(String name, String description, List<RoomItem> roomItems, RoomMonster roomMonster, RoomPuzzle puzzle, RoomGold roomGold) {
 		this.name = name;
@@ -88,6 +89,17 @@ public class Room implements Serializable{
 		this.containsShop = shop;
 	}
 	
+	public boolean containsMechanic() {
+		return containsMechanic;
+	}
+	public boolean setContainsMechanic() {
+		return containsMechanic;
+	}
+
+	public void setContainsMechanic(boolean containsMechanic) {
+		this.containsMechanic = containsMechanic;
+	}
+
 	@Override
 	public String toString() {
 		return this.name + " " + this.description;

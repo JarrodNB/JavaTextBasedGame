@@ -68,7 +68,8 @@ public class GameRooms {
 	public static Room getHomeBase() {
 		String description = "Upon exiting the portal, you enter a base located on the moon. The room is filled with"
 				+ " 4 portals labelled Mercury, Venus, Earth, and Mars.\n"
-				+ " There is also a shop keeper there, who looks at you, hoping that you came to buy something.";
+				+ " There is also a shop keeper there, who looks at you, hoping that you came to buy something. Try typing shop to interact with him.\n"
+				+ "Your ship mechanic has also set up here. Perhaps you should talk to him by typing mechanic.";
 		List<RoomItem> roomItems = null;
 		RoomMonster roomMonster = null;
 		RoomPuzzle roomPuzzle = null;
@@ -84,6 +85,7 @@ public class GameRooms {
 		exits.put("Europa", true);
 		Room room = new Room("Laboratory", description, roomItems, roomMonster, roomPuzzle, roomGold);
 		room.setContainsShop(true);
+		room.setContainsMechanic(true);
 		room.setExits(exits);
 		return room;
 	}
@@ -275,9 +277,9 @@ public class GameRooms {
 	}
 	// done
 	public static Room getPhobos() {
-		String description = "You walk into most disastrous room on the planet and the monster"
-				+ " is waiting for you in the corner.\n There is a medication "
-				+ "in the room and few other rewards once you kill the monster.";
+		String description = "The floor is riddled with holes here. You make a note to yourself to be careful, or you might fall.\n"
+				+ " You look around, and spot a couple of useful items across the room.\n"
+				+ " You can’t see them clearly because of the monster blocking your way. Better kill it first.";
 		List<RoomItem> roomItems = new ArrayList<>();
 		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Barrel"));
 		roomItems.add(new RoomItem(GameItems.getLaserRifle(1), "Hole"));
@@ -309,7 +311,9 @@ public class GameRooms {
 	}
 	// done
 	public static Room getWasteLand() {
-		String description = "TODO";
+		String description = "You walk into most disastrous room on the planet and the monster"
+				+ " is waiting for you in the corner.\n There is a medication "
+				+ "in the room and few other rewards once you kill the monster.";
 		List<RoomItem> roomItems = new ArrayList<>();
 		roomItems.add(new RoomItem(GameItems.getMedicine(1), "Bag"));
 		RoomMonster roomMonster = null;

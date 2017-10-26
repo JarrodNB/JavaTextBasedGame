@@ -12,7 +12,7 @@ import Models.Room;
 import Models.RoomItem;
 
 public class RoomHandler {
-	// add ship mechanic to give quests
+
 	private static final String HELP = "Your possible commands are look, check containerName,"
 			+ " fight, examine monster, solve puzzle, open inventory, save, and go to RoomName";
 
@@ -88,6 +88,10 @@ public class RoomHandler {
 				System.out.println("There is no monster to examine");
 				return null;
 			}
+		}
+		
+		else if (input.equalsIgnoreCase("mechanic")) {
+			Quest.display(room.getUniverse().getPlayer());
 		}
 		
 		String[] inputArray = input.split(" ");
