@@ -92,6 +92,7 @@ public class RoomHandler {
 		
 		else if (input.equalsIgnoreCase("mechanic")) {
 			Quest.display(room.getUniverse().getPlayer());
+			return null;
 		}
 		
 		String[] inputArray = input.split(" ");
