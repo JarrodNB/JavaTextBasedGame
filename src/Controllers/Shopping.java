@@ -56,7 +56,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					buy(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item I have.");
 				}
 			} else if (inputArray.length == 4){
 				String itemName = inputArray[1] + " " + inputArray[2] + " " + inputArray[3];
@@ -65,7 +65,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					buy(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item I have.");
 				}
 			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
@@ -74,7 +74,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					buy(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item I have.");
 				}
 			} else {
 				System.out.println("Buy what?");
@@ -89,7 +89,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					sell(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item that can be sold.");
 				}
 				
 			} else if (inputArray.length == 4){
@@ -99,7 +99,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					sell(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item that can be sold.");
 				}
 			} else if (inputArray.length == 2){
 				String itemName = inputArray[1];
@@ -108,7 +108,7 @@ public class Shopping {
 					item = shop.getStockItem(itemName);
 					sell(player, item);
 				} else {
-					System.out.println("Thats not a real Item.");
+					System.out.println("Thats not an item that can be sold.");
 				}
 			} else {
 				System.out.println("Sell what?");
