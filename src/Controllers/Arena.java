@@ -14,7 +14,7 @@ import Models.RoomMonster;
 public class Arena {
 	
 	private static final int DEFEND = 2; // defense to be added when defending
-	private static final String HELP = "Your possible commands are attack, defend, open inventory, and retreat.";
+	private static final String HELP = "Your possible commands are \"attack\", \"defend\", \"open inventory\", and \"retreat\".";
 
 	public static void fight(Player player, RoomMonster roomMonster) throws PlayerIsDeadException{
 		Monster monster = roomMonster.getMonster();
